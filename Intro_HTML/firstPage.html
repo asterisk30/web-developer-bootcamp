@@ -7,10 +7,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- title is important for browsing and search engine -->
   <title>HTML Sandbox</title>
+  <style type="text/css">
+    .title1 {
+      background:yellow;
+    }
+    .green {
+      color: green;
+    }
+  </style>
 </head>
   <!-- content goes in the body -->
 <body>
-  <!-- h tag and p tag are block level elements -->
+  <!-- h tag, p tag and div tag are block level elements -->
   <h1>Heading level 1</h1>
   <h2>Heading level 2</h2>
   <h3>Heading level 3</h3>
@@ -18,7 +26,7 @@
   <h5>Heading level 5</h5>
   <h6>Heading level 6</h6>
   <p>block of paragraph</p>
-  <!-- strong is inline elements -->
+  <!-- strong and span are inline elements -->
   <p><strong>Attention! </strong>new block of paragraph starts here</p>
   <!-- unordered list -->
   <ul>
@@ -48,6 +56,12 @@
       </ul>
     </li>
   </ol>
-  <strong></strong>
+  <!-- div tag is for grouping things together -->
+  <div class="title1">
+  <h1>Some title</h1>
+  <p><span class="green">Lorem ipsum</span> dolor sit amet, consectetur adipisicing elit. Mollitia quidem tempora repellendus ut perspiciatis nostrum amet? Nesciunt omnis doloribus vel repellat quasi. Aperiam tempora officia temporibus consectetur incidunt? Veritatis, sequi.</p>
+  </div>
+
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia quidem tempora repellendus ut perspiciatis nostrum amet? Nesciunt omnis doloribus vel repellat quasi. Aperiam tempora officia temporibus consectetur incidunt? Veritatis, sequi.
 </body>
 </html>
