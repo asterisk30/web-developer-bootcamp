@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML Forms</title>
+</head>
+<body>
+  <input type="text">
+  <input type="color">
+  <input type="number">
+  <input type="password">
+  <input type="file">
+  <input type="search">
+  <input type="button" value="A Button">
+  <input type="time">
+  <input type="url">
+  <input type="month">
+  <input type="email">
+
+  <h1>Login Page</h1>
+  <!-- action - where the form sends data to -->
+  <!-- method - what HTTP method to use (get / post / put / delete) -->
+  <!-- if not specified, method will be get by default -->
+  <form>
+    <div>
+      <label for="username">Email: </label>
+      <input name="username" type="email" id="username" placeholder="email" required>
+      <label for="password">Password: </label>
+      <input name="password" type="password" id="password" placeholder="password" required>
+    </div>
+    <br>
+    <input type="submit">
+  </form>
+  <!-- checkbox can be checked or unchecked -->
+  <input type="checkbox">
+  <!-- radio is for single choice questions -->
+  <form>
+    <h5>Please select your gender</h5>
+    <!-- by giving the inputs the same name, we are connecting them and now we can only choose from one of them not both -->
+    <label for="female">Female</label>
+    <input name="gender" type="radio" id="female" value="female">
+    <label for="male">Male</label>
+    <input name="gender" type="radio" id="male" value="male">
+    <!-- select is for dropdown menu -->
+    <select name="number" id="number">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+    </select>
+    <!-- textarea tag is for bigger space of text -->
+    <textarea name="textlong" id="" cols="50" rows="10"></textarea>
+    <button>Submit</button>
+  </form>
+</body>
+</html>
