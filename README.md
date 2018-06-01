@@ -1,4 +1,4 @@
-##The web developer bootcamp covers the following
+## The web developer bootcamp covers the following
 
 JavaScript Basics
 
