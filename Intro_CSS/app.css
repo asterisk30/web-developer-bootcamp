@@ -1,3 +1,27 @@
 h4 {
-  color: green;
+  color: peachpuff;
+  background: rgb(0, 200, 200, .3)
 }
+h1 {
+  color: #00756b;
+  /* you need all three color, width and style to make border work */
+  /* border-color: pink;
+  border-width: 5px;
+  border-style: solid; */
+  border: 5px dashed aliceblue;
+}
+body {
+  background: url(http://i0.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Hexadecimal -- base 16
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+#__ __ __ (red, green, blue)
+*/
+
+/* RGB syntax
+rgb(#, #, #) # goes from 0 to 255 which covers 256 colors which is 16^2
+
+RGBA -- A stands for alpha, it is from 0 to 1 and it changes the transparency
+*/
