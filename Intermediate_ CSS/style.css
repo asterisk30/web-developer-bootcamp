@@ -1,0 +1,32 @@
+h1 {
+  font-family: Times New Roman;
+  font-size: 50px;
+  text-align: center;
+}
+p {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: 10;
+  line-height: 1.5;
+}
+
+span {
+  font-size: 2.5em;
+  text-decoration: line-through;
+}
+
+/* 
+
+- font-family specifies the style of the font
+
+- font-size specifies the size of the font, px can be used to hard code the size, em can be used to give a relative font size comparing to the parent paragraph
+
+- font-weight specifies how thick the font look like
+
+- line-height specifies the space between each line, by default, larger fonts have larger space in between, the value of line-height will be a multiplier of the current default line- height
+
+- text-align controls the position of the text, whether it's left, right or center
+
+- text-decoration controls the effect on text (underline, strike through, upper line etc)
+
+*/
