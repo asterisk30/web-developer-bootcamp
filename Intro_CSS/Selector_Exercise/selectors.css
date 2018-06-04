@@ -3,7 +3,7 @@ DO NOT ALTER THE EXISTING HTML TO DO THIS.  WRITE ONLY CSS!
 
 /* Give the <body> element a background of #bdc3c7*/
 body {
-  color: #bdc3c7;
+  background: #bdc3c7;
 }
 
 /* Make the <h1> element #9b59b6*/
@@ -18,7 +18,7 @@ h2 {
 
 /* Make all <li> elements blue(pick your own hexadecimal blue)*/ 
 li {
-  color: #0000ff;
+  color: #10aaff;
 }
 
 /*Change the background on every paragraph to be yellow*/
@@ -38,7 +38,7 @@ input {
 
 /* Give the element with id 'special' a 2px solid blue border(pick your own rgb blue)*/
 #special {
-  border: 2px solid #0000ff;
+  border: 2px solid rgb(0, 100, 255);
 }
 
 /*Make all the <p>'s that are nested inside of divs 25px font(font-size: 25px)*/
@@ -82,8 +82,9 @@ label {
 }
 
 /*Make the first letter of the element with id 'special' green and 100px font size(font-size: 100px)*/
-#special::first-letter {
+#special:first-letter {
   font-size: 100px;
+  color: green;
 }
 
 /*Make the <h1> element's color change to blue when hovered over */
