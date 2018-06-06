@@ -18,3 +18,16 @@ comparison in JS could be the following
  * Below is due to NO type coercion *
     - 1 === "1" -> false, type of 1 and "1" are different
     - [1, 2, 3] === [1, 2, 3] -> false, even if they are the same value and type, they are NON PRIMITIVE variables which means they cannot be compared this way
+
+  * Truthy and Falsy values *
+  values that are not true or false can still be truthy or Falsy
+
+  Falsy:
+  - 0
+  - false
+  - NaN
+  - "" // empty string
+  - null
+  - undefined
+
+  everything else is truthy
