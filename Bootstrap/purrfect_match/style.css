@@ -1,0 +1,27 @@
+body {
+  background-image: url(https://source.unsplash.com//C0zDWAPFT9A);
+  background-size: cover;
+  background-position: center;
+}
+
+html {
+  height: 100%;
+}
+h1 {
+  font-weight: 700;
+  font-size: 5em;
+}
+.content {
+  text-align: center;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+               0px 8px 13px rgba(0, 0, 0, 0.6);
+  padding-top: 35%;
+  color: white;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  width: 600px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
