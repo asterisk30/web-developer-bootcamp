@@ -1,0 +1,20 @@
+Booleans are true or false in Javascript, it is a way of helping us make decisions
+
+comparison in JS could be the following
+  1. ==/ != equal to/ not equal to
+    - 1 == 2 -> false
+    - 2 == 2 -> true
+* Below is due to type coercion *
+    - 1 == "1" -> true
+    - true == 1 -> true
+    - false == 0 -> false
+    - null == undefined -> true
+* Below is a case need to be aware of *
+    - NaN == NaN -> false
+
+  2. >/< larger than/ less than
+  3. >=/<= larger equal to/ less equal to
+ 
+ * Below is due to NO type coercion *
+    - 1 === "1" -> false, type of 1 and "1" are different
+    - [1, 2, 3] === [1, 2, 3] -> false, even if they are the same value and type, they are NON PRIMITIVE variables which means they cannot be compared this way
