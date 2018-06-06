@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Josefin+Sans:400,700i|Pacifico" rel="stylesheet">
+  <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <style>
+    body {
+      padding: 70px;
+    }
+    .jumbotron {
+      color: #2c3e50;
+    }
+    .jumbotron>p {
+      font-family: Indie Flower;
+    }
+    .jumbotron>h1 {
+      font-family: Pacifico;
+    }
+    .navbar-inverse {
+      background: #2c3e50;
+      font-family: Josefin Sans;
+    }
+    #logo {
+      width: 32px;
+      height: 27.9px;
+    }
+    .img-thumbnail {
+      margin: 10px;
+    }
+  </style>
+  <title>Image Gallery</title>
+</head>
+<body>
+  <!-- nav bar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <!-- container-fluid takes up 100% while container is responsive -->
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- button is the hamburger shaped dropdown -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><i class="fas fa-camera-retro"></i> Apa Image</a>
+      </div>
+      <!-- when it hits mobile size, the wrapped elements will not display on screen -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- main image gallery body -->
+  <div class="container">
+    <div class="jumbotron">
+      <h1><i class="fas fa-camera"></i> Image Gallery</h1>
+      <br><br>
+      <p>To know more about Apalipacepa...</p>
+    </div>
+
+  <!-- image starts here  -->
+    <div class="row">
+      <!-- thumbnail adds border to each cell -->
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/UVEPG73xpiU" class="img-thumbnail">
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/O6DUoIl6NWA" class="img-thumbnail">
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/Z6A9eQVt_7s" class="img-thumbnail">
+      </div>
+    </div>
+    <div class="row">
+      <!-- thumbnail adds border to each cell -->
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/RmO3If0EYHM" class="img-thumbnail">
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/22I0e2Psjm4" class="img-thumbnail">
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/9kcIgiSRdBo" class="img-thumbnail">
+      </div>
+    </div>
+    <div class="row">
+      <!-- thumbnail adds border to each cell -->
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/KB9uIKWQN7I" class="img-thumbnail">
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/ciQrPkKotSM" class="img-thumbnail">
+      </div>
+      <div class="col-lg-4 col-sm-6">
+        <img src="https://source.unsplash.com/688Fna1pwOQ" class="img-thumbnail">
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+</body>
+</html>
