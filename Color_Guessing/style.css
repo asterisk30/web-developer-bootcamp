@@ -1,0 +1,27 @@
+body {
+  background-color: black;
+}
+
+#title {
+  color: white;
+  text-align: center;
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.square {
+  width: 30%;
+  background-color: purple;
+  border: 2px solid white;
+  margin: 1%;
+  padding-bottom: 30%;
+  float: left;
+}
+
+.white {
+  background-color: white;
+  border: 2px dashed pink;
+}
