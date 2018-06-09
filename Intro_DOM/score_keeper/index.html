@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    body{
+      padding: 20px;
+    }
+    .container {
+      margin-top: 20px;
+      padding: 20px;
+    }
+    div h1 {
+      font-size: 6em;
+    }
+    h1:nth-of-type(1) {
+      text-align: center;
+    }
+    .green {
+      color: green;
+    }
+  </style>
+  <title>Score Keeper</title>
+</head>
+<body>
+  <h1>Score Keeper</h1>
+  <div class="container jumbotron" id="container">
+    <h1>
+      <span id="score1">0</span>
+      to
+      <span id="score2">0</span></h1>
+    <h3>
+      Playing to: 
+      <span id="maxNumDisplay"></span></h3>
+    <input type="number" id="maxNum" placeholder="please input a number.">
+    <button id="p1">Player One</button>
+    <button id="p2">Player Two</button>
+    <button id="reset">Reset</button>
+    <script src="app.js"></script>
+  </div>
+
+</body>
+</html>
