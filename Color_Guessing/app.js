@@ -7,8 +7,25 @@ var colors = [
   "rgb(25, 50, 50)",
 ]
 
-// select squares and assign hard coded colors
+// select html elements
 var squares = document.querySelectorAll('.square');
+var rgbDisplay = document.querySelector('.rgbDisplay');
+
+
 squares.forEach((item, index) => {
+  // assign original colors
   item.style.backgroundColor = colors[index];
+  // add click listeners
+  item.addEventListener('click', () => {
+    var clickedColor = item.style.backgroundColor;
+    if ( clickedColor === winningColor) {
+      alert('You win!!!')
+    } else {
+      alert('try again')
+    }
+  })
 })
+
+// assign winning color and display on html
+var winningColor = colors[3];
+rgbDisplay.textContent = winningColor;
