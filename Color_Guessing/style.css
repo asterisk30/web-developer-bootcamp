@@ -29,3 +29,7 @@ body {
   background-color: white;
   border: 2px dashed pink;
 }
+
+.selected {
+  border: 1px solid lightblue;
+}
