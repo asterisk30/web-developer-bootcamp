@@ -7,63 +7,39 @@ const rgbDisplay = document.querySelector('.rgbDisplay');
 const result = document.querySelector('#result');
 const title = document.querySelector('#title');
 const resetBtn = document.querySelector('#reset');
-const easyBtn = document.querySelector('#easy');
-const hardBtn = document.querySelector('#hard');
-
+const modeBtns = document.querySelectorAll('.mode');
 // original page set up
 pageSetUp(mode);
 
 // Add event listeners
 squares.forEach((item, index) => {
   // add click listeners
-  item.addEventListener('click', () => {
-    var clickedColor = item.style.backgroundColor;
-    if ( clickedColor === winningColor) {
-      result.textContent = 'That\'s a bingo!'
-      changeAllSquare(clickedColor);
-      title.style.backgroundColor = clickedColor;
-      resetBtn.textContent = 'Play Again?';
-      easyBtn.style.display = 'none';
-      hardBtn.style.display = 'none';
-    } else {
-      item.style.backgroundColor = 'black';
-      result.textContent = 'Try Again!'
-      setTimeout(() => {
-        result.textContent = '';
-      }, 1000)
-    }
-  });
+  item.addEventListener('click', gameRule);
 })
 
 resetBtn.addEventListener('click', () => {
   resetBtn.textContent = 'New Colors';
   result.textContent = '';
-  easyBtn.style.display = 'inline-block';
-  hardBtn.style.display = 'inline-block';
+  modeBtns[0].style.display = 'inline-block';
+  modeBtns[1].style.display = 'inline-block';
   pageSetUp(mode);
 });
 
-easyBtn.addEventListener('click', () => {
-  hardBtn.classList.remove('selected');
-  easyBtn.classList.add('selected');
-  mode = 'easy';
-  pageSetUp(mode);
-});
-
-hardBtn.addEventListener('click', () => {
-  easyBtn.classList.remove('selected');
-  hardBtn.classList.add('selected');
-  mode = 'hard';
-  pageSetUp(mode);
-});
+modeBtns.forEach(item => {
+  item.addEventListener('click', () => {
+    modeBtns[0].classList.remove('selected');
+    modeBtns[1].classList.remove('selected');
+    item.classList.add('selected');
+    item.textContent === 'Easy' ? mode = 'easy' : mode = 'hard';
+    pageSetUp(mode);
+  })
+})
 
 // page set up
 function pageSetUp(mode) {
   title.style.backgroundColor = '#0abab5';
   if (mode === 'easy') {
     colors = generateCol(3);
-    winningColor = pickWin();
-    rgbDisplay.textContent = winningColor;
     for (var i = 0; i < 3; i++) {
       squares[i].style.backgroundColor = colors[i];
     }
@@ -72,13 +48,32 @@ function pageSetUp(mode) {
     }
   } else {
     colors = generateCol(6);
-    winningColor = pickWin();
-    rgbDisplay.textContent = winningColor;
     squares.forEach((item, index) => {
       // assign original colors
       item.style.backgroundColor = colors[index];
       item.style.display = 'block';
     })
+  }
+  winningColor = pickWin();
+  rgbDisplay.textContent = winningColor;
+}
+
+// game rules
+function gameRule() {
+  var clickedColor = item.style.backgroundColor;
+  if ( clickedColor === winningColor) {
+    result.textContent = 'That\'s a bingo!'
+    changeAllSquare(clickedColor);
+    title.style.backgroundColor = clickedColor;
+    resetBtn.textContent = 'Play Again?';
+    modeBtns[0].style.display = 'none';
+    modeBtns[1].style.display = 'none';
+  } else {
+    item.style.backgroundColor = 'black';
+    result.textContent = 'Try Again!'
+    setTimeout(() => {
+      result.textContent = '';
+    }, 1500)
   }
 }
 
