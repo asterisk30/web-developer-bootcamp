@@ -1,6 +1,7 @@
 // define variables
 var colors;
 var winningColor;
+var mode;
 const squares = document.querySelectorAll('.square');
 const rgbDisplay = document.querySelector('.rgbDisplay');
 const result = document.querySelector('#result');
@@ -10,7 +11,7 @@ const easyBtn = document.querySelector('#easy');
 const hardBtn = document.querySelector('#hard');
 
 // original page set up
-pageSetUp();
+pageSetUp(mode);
 
 // Add event listeners
 squares.forEach((item, index) => {
@@ -21,6 +22,9 @@ squares.forEach((item, index) => {
       result.textContent = 'That\'s a bingo!'
       changeAllSquare(clickedColor);
       title.style.backgroundColor = clickedColor;
+      resetBtn.textContent = 'Play Again?';
+      easyBtn.style.display = 'none';
+      hardBtn.style.display = 'none';
     } else {
       item.style.backgroundColor = 'black';
       result.textContent = 'Try Again!'
@@ -31,23 +35,31 @@ squares.forEach((item, index) => {
   });
 })
 
-resetBtn.addEventListener('click', pageSetUp);
+resetBtn.addEventListener('click', () => {
+  resetBtn.textContent = 'New Colors';
+  result.textContent = '';
+  easyBtn.style.display = 'inline-block';
+  hardBtn.style.display = 'inline-block';
+  pageSetUp(mode);
+});
 
 easyBtn.addEventListener('click', () => {
   hardBtn.classList.remove('selected');
   easyBtn.classList.add('selected');
-  pageSetUp('easy');
+  mode = 'easy';
+  pageSetUp(mode);
 });
 
 hardBtn.addEventListener('click', () => {
   easyBtn.classList.remove('selected');
   hardBtn.classList.add('selected');
-  pageSetUp();
+  mode = 'hard';
+  pageSetUp(mode);
 });
 
 // page set up
 function pageSetUp(mode) {
-  title.style.backgroundColor = 'black';
+  title.style.backgroundColor = '#0abab5';
   if (mode === 'easy') {
     colors = generateCol(3);
     winningColor = pickWin();

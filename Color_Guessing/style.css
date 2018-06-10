@@ -1,7 +1,19 @@
 body {
   background-color: black;
   color: white;
+  font-family: "Jua";
   text-align: center;
+  margin: 0;
+}
+
+#title {
+  background-color: #0abab5;
+  margin: 0;
+  padding: 20px 0;
+}
+
+.rgbDisplay {
+  font-size: 2em;
 }
 
 .container {
@@ -13,8 +25,13 @@ body {
   background-color: white;
   color: black;
   height: 30px;
-  margin: 2px;
+  margin: 0;
   padding-top: 10px;
+}
+
+#result {
+  display: inline-block;
+  width: 20%;
 }
 
 .square {
@@ -23,6 +40,8 @@ body {
   margin: 1.6%;
   padding-bottom: 30%;
   float: left;
+  border-radius: 50%;
+  transition: 0.5s;
 }
 
 .white {
@@ -31,5 +50,22 @@ body {
 }
 
 .selected {
-  border: 1px solid lightblue;
+  border: 1px solid #0abab5;
+}
+
+button {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-family: "Jua";
+  font-weight: 700;
+  color: #0abab5;
+  font-size: inherit;
+  letter-spacing: 1px;
+  transition: 0.2s;
+}
+
+button:hover {
+  color: white;
+  background-color: #0abab5;
 }
