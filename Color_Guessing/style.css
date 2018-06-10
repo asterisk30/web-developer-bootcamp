@@ -9,11 +9,18 @@ body {
   margin: 0 auto;
 }
 
+.navbar {
+  background-color: white;
+  color: black;
+  height: 30px;
+  margin: 2px;
+  padding-top: 10px;
+}
+
 .square {
   width: 30%;
   background-color: purple;
-  border: 2px solid white;
-  margin: 1%;
+  margin: 1.6%;
   padding-bottom: 30%;
   float: left;
 }
