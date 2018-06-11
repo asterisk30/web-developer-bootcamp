@@ -60,7 +60,7 @@ function pageSetUp(mode) {
 
 // game rules
 function gameRule() {
-  var clickedColor = item.style.backgroundColor;
+  var clickedColor = this.style.backgroundColor;
   if ( clickedColor === winningColor) {
     result.textContent = 'That\'s a bingo!'
     changeAllSquare(clickedColor);
@@ -69,7 +69,7 @@ function gameRule() {
     modeBtns[0].style.display = 'none';
     modeBtns[1].style.display = 'none';
   } else {
-    item.style.backgroundColor = 'black';
+    this.style.backgroundColor = 'black';
     result.textContent = 'Try Again!'
     setTimeout(() => {
       result.textContent = '';
