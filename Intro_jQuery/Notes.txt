@@ -1,0 +1,19 @@
+jQuery is a JavaScript library which comes with a bunch of useful methods including
+
+- Select elements
+- Manipulate elements
+- Create elements
+- Add event listeners
+- Animate elements
+- Add effect
+- Make http requests (AJAX)
+
+Why jQuery?
+
+- simple and clear
+- ease of use
+- cross-browser support
+
+Why not jQuery?
+
+jQuery does not do anything that is outside of the functionality of vanila JavaScript. It is a heavy tool for what it does.
