@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <title>jQuery Demo</title>
+</head>
+<body>
+  <h1>This is a demo of how to use jQuery</h1>
+  <h1>another h1</h1>
+  <ul>
+    <li>hello</li>
+    <li>hola</li>
+    <li>nihao</li>
+  </ul>
+  <script>
+    // jQuery works similar to querySelectorAll
+    console.log($("h1"))
+    // .css is a method in jQuery which can set styling attributes to certain value
+    $("ul").css('color', 'pink');
+
+    var style = {
+      color: 'yellow',
+      background: 'pink',
+      border: '2px solid purple'
+    }
+
+    // you can pass in an object of style to change multiple attributes at the same time without repeating the code
+
+    $("h1").css(style); // this style applies to ALL h1
+    $("h1:first-of-type").css('color', 'white'); // this style only applies to the first h1 
+  </script>
+</body>
+</html>
