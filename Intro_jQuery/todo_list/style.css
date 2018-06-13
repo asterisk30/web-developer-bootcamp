@@ -1,0 +1,47 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(#e66465, #9198e5);
+  padding: 10%
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+.container {
+  margin: auto;
+  padding: 10%;
+  position: center;
+  width: 360px;
+  background-color: peachpuff;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.fadeOut {
+  animation: fadeOut 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
