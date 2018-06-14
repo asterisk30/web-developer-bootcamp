@@ -9,16 +9,17 @@
   integrity="sha256-8WqyJLuWKRBVhxXIL1jBDD7SDxU936oZkCnxQbWwJVw="
   crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700i" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Todo List</title>
 </head>
 <body>
   <div class="container">
-    <h1>To-Do List</h1>
-    <input type="text" id="new-todo" placeholder="Add New Todo">
+    <h1>To-Do List <span><i class="fas fa-plus"></i></span></h1>
+    <input type="text" id="new-todo" placeholder="Add New Todo...">
     <ul>
-      <li><button class="delete-item">X</button>To do 1</li>
-      <li><button class="delete-item">X</button>To do 2</li>
+      <li><span class="delete-item"><i class="fas fa-trash-alt"></i></span> To do 1</li>
+      <li><span class="delete-item"><i class="fas fa-trash-alt"></i></span> To do 2</li>
     </ul>
   </div>
   <script src="app.js"></script>
