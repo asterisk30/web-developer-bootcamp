@@ -1,10 +1,9 @@
-<style>
+<!-- <style>
   body {
     color: pink
   }
-</style>
-
-
+</style> -->
+<% include partials/header  %>
 <h1>This this post page</h1>
 
 <% for (var i = 0; i < posts.length; i++) { %>
@@ -16,3 +15,5 @@
 <% posts.forEach(post => { %>
   <li><%= post.title %> - <%= post.name %></li>
 <% }) %>
+
+<% include partials/footer  %>

@@ -4,6 +4,9 @@ let ejs = require('ejs'),
     people = ['geddy', 'neil', 'alex'],
     html = ejs.render('<%= people.join(", "); %>', {people: people});
 
+// include directories other than view
+app.use(express.static('public'));
+
 app.get('/', function(req, res) {
   res.render('home.ejs');
 })
