@@ -10,3 +10,7 @@ What is the "E" for? "Embedded?" Could be. How about "Effective," "Elegant," or 
 * res.render(fileName, object)
 fileName is the file you want to render
 object allows you to pass through a local variable to template variable
+
+* How to style ejs?
+
+1. Add style tag just like in htmls

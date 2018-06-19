@@ -5,12 +5,22 @@ let ejs = require('ejs'),
     html = ejs.render('<%= people.join(", "); %>', {people: people});
 
 app.get('/', function(req, res) {
-  res.render('love.ejs');
+  res.render('home.ejs');
 })
 
 app.get('/:thing', function(req, res) {
   var thing = req.params.thing;
   res.render('love.ejs', {thing: thing});
+})
+
+app.get('/p/posts', function(req, res) {
+  var posts = [
+    {title: 'blah', name: 'little black'},
+    {title: 'blaaah', name: 'little blaaack'},
+    {title: 'blaaaaaah', name: 'little blaaaaack'},
+    {title: 'blaaaaaaaaah', name: 'little blaaaaaack'}
+  ];
+  res.render('posts.ejs', {posts:posts});
 })
 
 
