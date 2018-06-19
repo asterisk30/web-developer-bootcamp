@@ -24,3 +24,5 @@ object allows you to pass through a local variable to template variable
 
 1. Add style tag just like in ejs
 2. Add a link to css file in ejs template (href="/style.css") the slash infront of style.css is necessary because it tells the server to go back to root directory and search for the file from there
+
+* How to make post request?
