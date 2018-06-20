@@ -20,6 +20,30 @@ var campground = [
   {
     name: 'Forest',
     image:'https://www.canadapost.ca/cpc/assets/cpc/uploads/illustrations/small/special-discounts.svg'
+  }, 
+  {
+    name: 'Hill',
+    image: 'https://www.canadapost.ca/cpc/assets/cpc/uploads/illustrations/small/special-discounts.svg'
+  },
+  {
+    name:'Mountain',
+    image:'https://www.canadapost.ca/cpc/assets/cpc/uploads/illustrations/small/special-discounts.svg'
+  },
+  {
+    name: 'Forest',
+    image:'https://www.canadapost.ca/cpc/assets/cpc/uploads/illustrations/small/special-discounts.svg'
+  }, 
+  {
+    name: 'Hill',
+    image: 'https://www.canadapost.ca/cpc/assets/cpc/uploads/illustrations/small/special-discounts.svg'
+  },
+  {
+    name:'Mountain',
+    image:'https://www.canadapost.ca/cpc/assets/cpc/uploads/illustrations/small/special-discounts.svg'
+  },
+  {
+    name: 'Forest',
+    image:'https://www.canadapost.ca/cpc/assets/cpc/uploads/illustrations/small/special-discounts.svg'
   }
 ];
 
