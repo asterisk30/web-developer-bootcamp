@@ -57,15 +57,19 @@ C:\mongodb\bin>mongo
 mongod runs the exe file in the bin folder
 
 * mongo
+
 mongo opens mongoDB Shell
 
 * help
+
 to see all the available commands and how to use them
 
 * show dbs
+
 see all the available databases
 
 * use
+
 create a new db and switch to that db
 
 * db.createCollection('collection_name')
@@ -73,13 +77,17 @@ create a new db and switch to that db
 create new collection in a specific db
 
 * db.collection.insert({object})
+
 insert items into certain collection
 
 * db.collection.find({optional arg})
+
 no arguments will return all items in this colleciton, given argument will return the corresponding subsets. argument could be {name: "John"}
 
 * db.collection.update({key to find the item})
+
 updates existing item
 
 * db.collection.remove({key to find the item})
+
 remove existing item
