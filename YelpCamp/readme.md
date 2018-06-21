@@ -16,10 +16,10 @@ Need to add header and footer and bootstrap styling
 
 |	name	|	url	|	request	|	desc	|
 |	-------------	|	-------------	|	-------------	|	-------------	|
-|		|		|		|		|
-|		|		|		|		|
-|		|		|		|		|
-|		|		|		|		|
+|	INDEX	|	/campground	|	GET	|	display a list of all campgrounds	|
+|	NEW	|	/campground/new	|	GET	|	display a form to make new campground	|
+|	CREATE	|	/campground	|	POST	|	Add new campground to DB	|
+|	SHOW	|	/campground:id	|	GET	|	display info about one specific campground	|
 |		|		|		|		|
 |		|		|		|		|
 |		|		|		|		|
