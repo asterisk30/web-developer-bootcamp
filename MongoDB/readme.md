@@ -53,6 +53,7 @@ C:\mongodb\bin>mongo
 ## Basic commands
 
 * mongod
+
 mongod runs the exe file in the bin folder
 
 * mongo
@@ -68,6 +69,7 @@ see all the available databases
 create a new db and switch to that db
 
 * db.createCollection('collection_name')
+
 create new collection in a specific db
 
 * db.collection.insert({object})
