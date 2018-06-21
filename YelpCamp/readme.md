@@ -11,3 +11,17 @@ Each Campground will have a name and an image
 ## Layout
 
 Need to add header and footer and bootstrap styling
+
+## RESTful Routes
+
+|	name	|	url	|	request	|	desc	|
+|	-------------	|	-------------	|	-------------	|	-------------	|
+|		|		|		|		|
+|		|		|		|		|
+|		|		|		|		|
+|		|		|		|		|
+|		|		|		|		|
+|		|		|		|		|
+|		|		|		|		|
+|		|		|		|		|
+|		|		|		|		|
