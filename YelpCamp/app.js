@@ -1,8 +1,34 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
+var express = require('express'),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+    app = express();
+
+mongoose.connect('mongodb://localhost/yelp_camp');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+
+
+// schema setup
+var campgroundSchema = new mongoose.Schema({
+  name: String,
+  image: String
+});
+
+// compile the schema into a model
+var Campgound = mongoose.model('Campgound', campgroundSchema);
+
+Campgound.create({
+  name: 'Hill',
+  image: 'https://www.canadapost.ca/cpc/assets/cpc/uploads/illustrations/small/special-discounts.svg'
+}, function(err, camp) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(camp)
+  }
+})
+
+
 
 app.get('/', function(req, res) {
   res.render('landing');
