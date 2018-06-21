@@ -1,0 +1,14 @@
+{
+  "name": "mongodb",
+  "version": "1.0.0",
+  "description": "1. download msi file from the following address",
+  "main": "cats.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Boyun Zou",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.1.6"
+  }
+}
