@@ -18,10 +18,8 @@ Need to add header and footer and bootstrap styling
 |	-------------	|	-------------	|	-------------	|	-------------	|
 |	INDEX	|	/campground	|	GET	|	display a list of all campgrounds	|
 |	NEW	|	/campgroundnew	|	GET	|	display a form to make new campground	|
-|	CREATE	|	/campground	|	POST	|	Add new campground to DB	|
+|	CREATE	|	/campground	|	POST	|	add new campground to DB	|
 |	SHOW	|	/campground/:id	|	GET	|	display info about one specific campground	|
-|		|		|		|		|
-|		|		|		|		|
-|		|		|		|		|
-|		|		|		|		|
-|		|		|		|		|
+|	Edit	|	/campground/:id/edit	|	GET	|	display edit form for one campground	|
+|	Update	|	/campground/:id	|	PUT	|	update a particular campground, then redirect to somewhere else	|
+|	Destroy	|	/campground/:id	|	DELETE	|	delete a particular campground, then redirect to somewhere else	|
