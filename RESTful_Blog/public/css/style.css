@@ -1,7 +1,23 @@
+a { 
+  color: inherit;
+}
+
+a:hover{
+  color: inherit;
+}
+
 i.icon {
   font-size: 2em;
 }
 
 .single {
   text-align: center;
+}
+
+.modify {
+  padding-top: 20px;
+}
+
+.blogtitle {
+  font-weight: normal;
 }

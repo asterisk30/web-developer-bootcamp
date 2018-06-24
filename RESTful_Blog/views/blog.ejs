@@ -1,10 +1,19 @@
 <% include partials/header.ejs%>
-<div class="ui main text container segment">
-    <div class="ui huge header single"><%= blog.title %></div>
-    <br>
-    <img class="ui fluid image" src="<%= blog.image%>">
-    <br>
-    <p><%= blog.blog %></p>
+<div class="ui main text container">
+  <div class="ui huge header single"><%= blog.title %></div>
+  <div class="ui top attached">
+    <div class="item">
+      <img class="ui fluid image" src="<%= blog.image%>">
+      <br>
+      <div class="content">
+        <p><%= blog.blog %></p>
+      </div>
+    </div>
+  </div>
+  <div class="modify">
+    <button class="ui orange basic button"><a href="/blogs/<%= blog._id%>/edit">Edit Blog</a></button>
+    <button class="ui red basic button">Delete Blog</button>
+  </div>
 </div>
 
 

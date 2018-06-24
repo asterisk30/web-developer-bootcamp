@@ -2,11 +2,13 @@
 
 var express = require('express'),
     app = express(),
+    methodOverride = require('method-override'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
 mongoose.connect('mongodb://localhost/restful_blog_app');
 
@@ -88,7 +90,13 @@ app.get('/blogs/:id/edit', function(req, res) {
 // UPDATE
 app.put('/blogs/:id', function(req, res) {
   // update single blog and save in database
-  res.redirect('/blogs/:id');
+  Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, blog) {
+    if (err) {
+      res.send('Cannot find and update blog...' + err);
+    } else {
+      res.redirect('/blogs/' + req.params.id);
+    }
+  })
 })
 
 // DESTROY
