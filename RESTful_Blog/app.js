@@ -76,7 +76,13 @@ app.get('/blogs/:id', function(req, res) {
 // EDIT
 app.get('/blogs/:id/edit', function(req, res) {
   // display edit form
-  res.render('editblog');
+  Blog.findById(req.params.id, function(err, blog) {
+    if (err) {
+      res.send('Cannot find blog...' + err)
+    } else {
+      res.render('editblog', {blog:blog});
+    }
+  })
 })
 
 // UPDATE
