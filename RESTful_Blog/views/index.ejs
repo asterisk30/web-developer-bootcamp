@@ -1,15 +1,18 @@
 <% include partials/header.ejs%>
 
-<div class="container">
-  <h1>This is home page</h1>
+<div class="ui main text container">
+  <h1>We do NOT call it soccer, it is FOOTBALL</h1>
   <% blogs.forEach(blog => { %>
     <div>
       <h2><%= blog.title%></h2>
-      <img src="<%= blog.image%>">
+      <img class="ui small image" src="<%= blog.image%>">
       <div>
         <span><%= blog.created%></span>
         <p><%= blog.blog %></p>
+        <a href="/blogs/<%= blog._id %>">Read More</a>
       </div>
+      <hr>
+      <br>
     </div>
   <% }) %>
 </div>

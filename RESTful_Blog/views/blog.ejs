@@ -1,5 +1,11 @@
 <% include partials/header.ejs%>
+<div class="ui main text container segment">
+    <div class="ui huge header single"><%= blog.title %></div>
+    <br>
+    <img class="ui fluid image" src="<%= blog.image%>">
+    <br>
+    <p><%= blog.blog %></p>
+</div>
 
-<h1>this is single blog page</h1>
 
 <% include partials/footer.ejs%>

@@ -56,15 +56,21 @@ app.post('/blogs', function(req, res) {
     if (err) {
       res.render('newblog');
     } else {
-      res.redirect('/blogs');
+      res.send('new blog saved successfully.');
     }
   })
 })
 
 // SHOW
 app.get('/blogs/:id', function(req, res) {
-  // display single blog based on id
-  res.render('blog');
+  // find the blog by id
+  Blog.findById(req.params.id, function(err, blog) {
+    if (err) {
+      res.send('Oops something went wrong...' + err);
+    } else {
+      res.render('blog', {blog: blog});
+    }
+  })
 })
 
 // EDIT
