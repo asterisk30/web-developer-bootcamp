@@ -10,7 +10,10 @@
         <i><%= blog.created.toString()%></i>
         <br>
         <p><%= blog.blog.substring(0, 50) %> ...</p>
-        <a href="/blogs/<%= blog._id %>">Read More</a>
+        <a href="/blogs/<%= blog._id %>">
+          Read More
+          <i class="angle double right icon"></i>
+        </a>
       </div>
       <hr>
       <br>
