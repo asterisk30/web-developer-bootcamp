@@ -3,6 +3,7 @@
 var express = require('express'),
     app = express(),
     methodOverride = require('method-override'),
+    expressSanitizer = require('express-sanitizer'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 
@@ -10,6 +11,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitizer());
 mongoose.connect('mongodb://localhost/restful_blog_app');
 
 
@@ -102,7 +104,13 @@ app.put('/blogs/:id', function(req, res) {
 // DESTROY
 app.delete('/blogs/:id', function(req, res) {
   // delete single blog and redirect to all blogs
-  res.redirect('/blogs');
+  Blog.findByIdAndRemove(req.params.id, function(err) {
+    if (err) {
+      res.send('Cannot delete the blog...' + err)
+    } else {
+      res.redirect('/blogs');
+    }
+  })
 })
 
 

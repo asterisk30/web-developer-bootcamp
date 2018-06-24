@@ -1,11 +1,3 @@
-a { 
-  color: inherit;
-}
-
-a:hover{
-  color: inherit;
-}
-
 i.icon {
   font-size: 2em;
 }
@@ -20,4 +12,8 @@ i.icon {
 
 .blogtitle {
   font-weight: normal;
+}
+
+#delete {
+  display: inline;
 }

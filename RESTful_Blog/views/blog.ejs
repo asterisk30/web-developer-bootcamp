@@ -11,8 +11,10 @@
     </div>
   </div>
   <div class="modify">
-    <button class="ui orange basic button"><a href="/blogs/<%= blog._id%>/edit">Edit Blog</a></button>
-    <button class="ui red basic button">Delete Blog</button>
+    <a class="ui orange basic button" href="/blogs/<%= blog._id%>/edit">Edit Blog</a>
+    <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+      <button class="ui red basic button">Delete Blog</button>
+    </form>
   </div>
 </div>
 
