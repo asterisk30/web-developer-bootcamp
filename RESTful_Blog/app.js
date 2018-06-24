@@ -55,6 +55,7 @@ app.get('/blogs/new', function(req, res) {
 
 // CREATE
 app.post('/blogs', function(req, res) {
+  req.body.blog.blog = req.sanitize(req.body.blog.blog);
   // create new blog and save in database
   Blog.create(req.body.blog, function(err, blog) {
     if (err) {
@@ -91,6 +92,7 @@ app.get('/blogs/:id/edit', function(req, res) {
 
 // UPDATE
 app.put('/blogs/:id', function(req, res) {
+  req.body.blog.blog = req.sanitize(req.body.blog.blog);
   // update single blog and save in database
   Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, blog) {
     if (err) {
