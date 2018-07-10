@@ -61,7 +61,7 @@ app.post('/blogs', function(req, res) {
     if (err) {
       res.render('newblog');
     } else {
-      res.send('new blog saved successfully.');
+      res.redirect(201, '/blogs');
     }
   })
 })
