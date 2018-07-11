@@ -31,34 +31,44 @@ var comment = {
 }
 
 function seedDB() {
-  // remove all the campgrounds
-  Campground.remove({}, function(err) {
+  // remove all the comments
+  Comment.remove({}, function(err) {
     if (err) {
       console.log(err);
     } else {
-      console.log('removed campgrounds');
-      // create new campgrounds
-      data.forEach(seed => {
-        Campground.create(seed, function(err, data) {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log('added new campgrounds');
-            // add comments to new campgrounds
-            Comment.create(comment, function(err, data) {
+      console.log('removed comments');
+      // remove all the campgrounds
+      Campground.remove({}, function(err) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('removed campgrounds');
+          // create new campgrounds
+          data.forEach(seed => {
+            Campground.create(seed, function(err, campground) {
               if (err) {
                 console.log(err);
               } else {
-                console.log('comment added');
-                // link comment to campground
-
+                console.log('added new campgrounds');
+                // add comments to new campgrounds
+                Comment.create(comment, function(err, comment) {
+                  if (err) {
+                    console.log(err);
+                  } else {
+                    // link comment to campground
+                    campground.comments.push(comment);
+                    campground.save();
+                    console.log('comment added');
+                  }
+                })
               }
             })
-          }
-        })
-      })
+          })
+        }
+      });
     }
   });
 
 }
+
 module.exports = seedDB;
