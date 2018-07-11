@@ -14,4 +14,4 @@ var campgroundSchema = new mongoose.Schema({
 });
 
 // compile the schema into a model
-module.exports = mongoose.model('Campgound', campgroundSchema);
+module.exports = mongoose.model('Campground', campgroundSchema);
