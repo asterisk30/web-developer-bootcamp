@@ -2,6 +2,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     Campgound = require('./models/campground'),
+    Comment = require('./models/comment'),
     seedDB = require('./seeds'),
     app = express();
 
@@ -9,6 +10,10 @@ seedDB();
 mongoose.connect('mongodb://localhost/yelp_camp');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
+
+// =====================================
+// Campground routes
+// =====================================
 
 app.get('/', function(req, res) {
   res.render('landing');
@@ -59,6 +64,36 @@ app.get('/campground/:id', function(req, res) {
     } else {
       // render show template with that specific campground
       res.render('show', {campground: foundCamp});
+    }
+  })
+})
+
+
+// =====================================
+// Comment routes
+// =====================================
+app.post('/campground/:id', function(req, res) {
+  // look up campground using id
+  Campgound.findById(req.params.id, function(err, campground) {
+    if (err) {
+      console.log(err);
+      res.redirect('/campground');
+    } else {
+      // create new comment in DB
+      let newcomment = req.body.comment;
+      newcomment.author = 'Some Good Guy';
+      Comment.create(newcomment, function(err, newcomment) {
+        if (err) {
+          console.log(err);
+          res.redirect('/campground');
+        } else {
+          // connect comment to campground
+          campground.comments.push(newcomment);
+          campground.save();
+          // redirect to show page
+          res.redirect(200, '/campground/' + campground._id);
+        }
+      });
     }
   })
 })

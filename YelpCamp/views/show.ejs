@@ -5,7 +5,18 @@
   <img src="<%= campground.image %>">
   <br><br>
   <p><%=  campground.description %></p>
-  <p><%=  campground.comments %></p>
+  <div>
+    <h3>Comments</h3>
+    <p><%=  campground.comments %></p>
+    <form action="/campground/<%= campground.id%>" method="POST">
+      <div class="form-group">
+      <input class="form-control" type="text" name="comment[text]" placeholder="new comment goes here...">
+      </div>
+      <div class="form-group">
+      <button class="btn btn-info">Submit Comment</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <% include partials/footer %>
