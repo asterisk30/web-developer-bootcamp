@@ -91,7 +91,7 @@ app.post('/campground/:id', function(req, res) {
           campground.comments.push(newcomment);
           campground.save();
           // redirect to show page
-          res.redirect(200, '/campground/' + campground._id);
+          res.redirect(302, '/campground/' + campground._id);
         }
       });
     }
