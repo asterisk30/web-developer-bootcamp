@@ -16,12 +16,12 @@
   <div class="row text-center">
     <% campground.forEach(item => { %>
       <div class="col-lg-4 col-sm-6">
-          <a href="/campground/<%= item._id %>">
-            <img src="<%= item.image %>" class="img-thumbnail">
-          </a>
-          <div class="caption">
-            <h4><%=  item.name %></h4>
-          </div>
+        <a href="/campground/<%= item._id %>">
+          <img src="<%= item.image %>" class="img-thumbnail">
+        </a>
+        <div class="caption">
+          <h4><%=  item.name %></h4>
+        </div>
       </div>
     <% }) %>
   </div>
