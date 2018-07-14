@@ -1,8 +1,11 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    passport = require('passport'),
+    localStrategy = require('passport-local'),
     Campgound = require('./models/campground'),
     Comment = require('./models/comment'),
+    User = require('./models/user'),
     seedDB = require('./seeds'),
     app = express();
 
