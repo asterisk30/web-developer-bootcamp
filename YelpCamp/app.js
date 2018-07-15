@@ -15,6 +15,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
+// Passport configuration
+app.use(require('express-session')({
+  secret: 'This is a secret.',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 // =====================================
 // Campground routes
 // =====================================
@@ -101,6 +114,32 @@ app.post('/campground/:id', function(req, res) {
     }
   })
 })
+
+
+// =====================================
+// Auth routes
+// =====================================
+app.get('/signup', function(req, res) {
+  res.render('register');
+})
+
+app.post('/signup', function(req, res) {
+  User.register(new User({username: req.body.username}), req.body.password, function(err, user) {
+    if (err) {
+      console.log(err);
+      res.render('register');
+    } else {
+      passport.authenticate('local')(req, res, function() {
+        console.log(user);
+        res.redirect('campground');
+      })
+    }
+  })
+})
+
+
+
+
 
 
 app.listen(3000, function() {
