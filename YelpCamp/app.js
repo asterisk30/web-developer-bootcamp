@@ -47,7 +47,7 @@ app.get('/campground', function(req, res) {
   })
 })
 
-app.post('/campground', function(req, res) {
+app.post('/campground', isLoggedIn, function(req, res) {
   // get data from form
   // add data to campground array
   // redirect to campground page
@@ -89,7 +89,7 @@ app.get('/campground/:id', function(req, res) {
 // =====================================
 // Comment routes
 // =====================================
-app.post('/campground/:id', function(req, res) {
+app.post('/campground/:id', isLoggedIn, function(req, res) {
   // look up campground using id
   Campgound.findById(req.params.id, function(err, campground) {
     if (err) {
@@ -148,8 +148,19 @@ app.post('/login', passport.authenticate('local', {
   res.send('Success Log In');
 })
 
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+})
 
-
+// middleware to check if user is logged in
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+}
 
 app.listen(3000, function() {
   console.log('server is up.')
