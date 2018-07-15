@@ -131,13 +131,22 @@ app.post('/signup', function(req, res) {
     } else {
       passport.authenticate('local')(req, res, function() {
         console.log(user);
-        res.redirect('campground');
+        res.redirect('/campground');
       })
     }
   })
 })
 
+app.get('/login', function(req, res) {
+  res.render('login');
+})
 
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/campground',
+  failureRedirect: '/login'
+}), function(req, res) {
+  res.send('Success Log In');
+})
 
 
 
