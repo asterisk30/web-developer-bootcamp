@@ -23,7 +23,13 @@
         <%  campground.comments.forEach(function(comment) { %>
           <div class="row">
             <div class="col-md-12">
-              By <strong><i><%= comment.author %></i></strong>
+              By 
+              <% if (user && comment.author === user.username) { %>
+                <strong><i>you</i></strong>
+              <% } else { %>
+                <strong><i><%= comment.author %></i></strong>
+              <% } %>
+              
               <span class="float-right">10 days ago</span>
               <br>
               <p>
