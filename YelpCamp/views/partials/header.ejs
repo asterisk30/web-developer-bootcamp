@@ -28,15 +28,21 @@
         </li>
       </ul>
       <ul class="navbar-nav navbar-right">
-        <li class="nav-item">
-          <a href="/signup" class="nav-link">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a href="/login" class="nav-link">Login</a>
-        </li>
-        <li class="nav-item">
-          <a href="/logout" class="nav-link">Logout</a>
-        </li>
+        <% if (!user) { %>
+          <li class="nav-item">
+            <a href="/signup" class="nav-link">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login" class="nav-link">Login</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <p class="nav-link">Signed In as <strong><i><%= user.username %></i></strong></p>
+          </li>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link">Logout</a>
+          </li> 
+        <% } %> 
       </ul>
     </div>
   </nav>

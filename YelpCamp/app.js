@@ -23,6 +23,10 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -98,7 +102,7 @@ app.post('/campground/:id', isLoggedIn, function(req, res) {
     } else {
       // create new comment in DB
       let newcomment = req.body.comment;
-      newcomment.author = 'Some Good Guy';
+      newcomment.author = req.user.username;
       Comment.create(newcomment, function(err, newcomment) {
         if (err) {
           console.log(err);
