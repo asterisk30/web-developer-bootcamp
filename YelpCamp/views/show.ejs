@@ -24,10 +24,10 @@
           <div class="row">
             <div class="col-md-12">
               By 
-              <% if (user && comment.author === user.username) { %>
+              <% if (user && comment.author.username === user.username) { %>
                 <strong><i>you</i></strong>
               <% } else { %>
-                <strong><i><%= comment.author %></i></strong>
+                <strong><i><%= comment.author.username %></i></strong>
               <% } %>
               
               <span class="float-right">10 days ago</span>

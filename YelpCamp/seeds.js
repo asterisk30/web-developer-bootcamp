@@ -27,7 +27,9 @@ var data = [
 
 var comment = {
   text: 'This place is really hot',
-  author: 'Some Good Guy'
+  author: {
+    username: 'Some Good Guy'
+  }
 }
 
 function seedDB() {
