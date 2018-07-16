@@ -23,3 +23,9 @@ Need to add header and footer and bootstrap styling
 |	Edit	|	/campground/:id/edit	|	GET	|	display edit form for one campground	|
 |	Update	|	/campground/:id	|	PUT	|	update a particular campground, then redirect to somewhere else	|
 |	Destroy	|	/campground/:id	|	DELETE	|	delete a particular campground, then redirect to somewhere else	|
+|	CREATE	|	/campground/:id	|	POST	|	add new comment to campground	|
+|	NEW	|	/signup	|	GET	|	display a form for sign up |
+|	CREATE	|	/signup	|	POST	|	add new user to DB |
+|	NEW	|	/login	|	GET	|	display a form for log in |
+|	CREATE	|	/login	|	POST	|	user authentication |
+|	NEW	|	/logout	|	GET	|	user log out and redirect to home page |
