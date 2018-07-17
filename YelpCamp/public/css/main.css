@@ -29,3 +29,6 @@ body {
   width: 32px;
   height: 27.9px;
 }
+.underline {
+  text-decoration: underline;
+}

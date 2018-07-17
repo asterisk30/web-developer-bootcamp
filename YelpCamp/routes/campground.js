@@ -22,22 +22,30 @@ router.post('/', isLoggedIn, function(req, res) {
   let name = req.body.name;
   let img = req.body.image;
   let desc = req.body.desc;
+  let author = {
+    id: req.user._id,
+    username: req.user.username
+  };
   let newCamp = {
     name: name,
     image: img,
-    description: desc
-  }
+    description: desc,
+    author: author
+  };
+
+
   // create new campground and save to database
   Campgound.create(newCamp, function(err, newCamp) {
     if (err) {
       console.log(err)
     } else {
+      console.log(newCamp);
       res.redirect('/campground');
     }
   });
 })
 
-router.get('/new', function(req, res) {
+router.get('/new', isLoggedIn, function(req, res) {
   res.render('newcamp');
 })
 

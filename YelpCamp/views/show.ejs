@@ -16,6 +16,9 @@
       <div class="caption-full  container-camp">
         <h5 class="float-right">$50.00/night</h5>
         <h4><%=  campground.name %></h4>
+        <p class="underline">Posted by 
+          <strong><i><%= campground.author.username%></i></strong>
+        </p>
       </div>
       <p><%=  campground.description %></p>
       <div class="well">

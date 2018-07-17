@@ -15,9 +15,10 @@ router.post('/campground/:id', isLoggedIn, function(req, res) {
     } else {
       // create new comment in DB
       let newcomment = req.body.comment;
-      let author = {};
-      author.id = req.user._id;
-      author.username = req.user.username;
+      let author = {
+        id: req.user._id,
+        username: req.user.username
+      };
       newcomment.author = author;
       Comment.create(newcomment, function(err, newcomment) {
         if (err) {
