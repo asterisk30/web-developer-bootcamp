@@ -4,6 +4,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     passport = require('passport'),
     localStrategy = require('passport-local'),
+    moment = require('moment'),
     User = require('./models/user'),
     seedDB = require('./seeds'),
     app = express();

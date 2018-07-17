@@ -14,11 +14,20 @@
       <img class="img-thumbnail" src="<%= campground.image %>">
       <br><br>
       <div class="caption-full  container-camp">
-        <h5 class="float-right">$50.00/night</h5>
+        <h5 class="float-right underline">$50.00/night</h5>
         <h4><%=  campground.name %></h4>
-        <p class="underline">Posted by 
-          <strong><i><%= campground.author.username%></i></strong>
-        </p>
+        <div class="row">
+          <div class="col-md-12">
+            <p>Posted by
+              <% if (user && campground.author.username === user.username) { %>
+                <strong><i>you</i></strong>
+              <% } else { %>
+                <strong><i><%= campground.author.username %></i></strong>
+              <% } %>
+              <span class="float-right"><%= campground.created %></span>
+            </p>
+          </div>
+        </div>
       </div>
       <p><%=  campground.description %></p>
       <div class="well">
@@ -32,8 +41,7 @@
               <% } else { %>
                 <strong><i><%= comment.author.username %></i></strong>
               <% } %>
-              
-              <span class="float-right">10 days ago</span>
+              <span class="float-right"><%= comment.created %></span>
               <br>
               <p>
                 <%= comment.text %>

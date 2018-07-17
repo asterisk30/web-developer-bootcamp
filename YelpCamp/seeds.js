@@ -9,7 +9,8 @@ var data = [
     description: 'This is a forest campground',
     author: {
       username: 'Some Good Guy'
-    }
+    },
+    created: Date.now()
   },
   {
     name: 'River',
@@ -17,7 +18,8 @@ var data = [
     description: 'This is a river campground',
     author: {
       username: 'Some Good Guy'
-    }
+    },
+    created: Date.now()
   },
   {
     name: 'Beach',
@@ -25,7 +27,8 @@ var data = [
     description: 'This is a beach campground',
     author: {
       username: 'Some Good Guy'
-    }
+    },
+    created: Date.now()
   },
   {
     name: 'Plain',
@@ -33,7 +36,8 @@ var data = [
     description: 'This is a plain campground',
     author: {
       username: 'Some Good Guy'
-    }
+    },
+    created: Date.now()
   }
 ];
 
@@ -41,7 +45,8 @@ var comment = {
   text: 'This place is really hot',
   author: {
     username: 'Some Good Guy'
-  }
+  },
+  created: Date.now()
 }
 
 function seedDB() {

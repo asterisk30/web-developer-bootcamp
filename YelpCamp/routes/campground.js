@@ -1,5 +1,6 @@
 var express = require('express'),
     router = express.Router(),
+    moment = require('moment'),
     Campgound = require('../models/campground');
 // =====================================
 // Campground routes
@@ -26,11 +27,13 @@ router.post('/', isLoggedIn, function(req, res) {
     id: req.user._id,
     username: req.user.username
   };
+  let created = Date.now();
   let newCamp = {
     name: name,
     image: img,
     description: desc,
-    author: author
+    author: author,
+    created: created
   };
 
 
@@ -39,7 +42,6 @@ router.post('/', isLoggedIn, function(req, res) {
     if (err) {
       console.log(err)
     } else {
-      console.log(newCamp);
       res.redirect('/campground');
     }
   });

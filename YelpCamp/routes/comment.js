@@ -20,6 +20,7 @@ router.post('/campground/:id', isLoggedIn, function(req, res) {
         username: req.user.username
       };
       newcomment.author = author;
+      newcomment.created = Date.now();
       Comment.create(newcomment, function(err, newcomment) {
         if (err) {
           console.log(err);
