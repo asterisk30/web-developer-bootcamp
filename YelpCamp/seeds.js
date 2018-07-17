@@ -6,22 +6,34 @@ var data = [
   {
     name: 'Forest',
     image: 'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg',
-    description: 'This is a forest campground'
+    description: 'This is a forest campground',
+    author: {
+      username: 'Some Good Guy'
+    }
   },
   {
     name: 'River',
     image: 'https://www.waggawaggaaustralia.com.au/imagesDB/gallery/DSC_2508.jpg',
-    description: 'This is a river campground'
+    description: 'This is a river campground',
+    author: {
+      username: 'Some Good Guy'
+    }
   },
   {
     name: 'Beach',
     image: 'https://www.atlantisbahamas.com/media/Things%20To%20Do/Water%20Park/Beaches/Hero/Experiences_Beach.jpg',
-    description: 'This is a beach campground'
+    description: 'This is a beach campground',
+    author: {
+      username: 'Some Good Guy'
+    }
   },
   {
     name: 'Plain',
     image: 'https://media.nationalgeographic.org/assets/photos/000/255/25557.jpg',
-    description: 'This is a plain campground'
+    description: 'This is a plain campground',
+    author: {
+      username: 'Some Good Guy'
+    }
   }
 ];
 
