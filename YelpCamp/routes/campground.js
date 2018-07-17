@@ -1,7 +1,7 @@
 var express = require('express'),
     router = express.Router(),
-    moment = require('moment'),
     Campgound = require('../models/campground');
+
 // =====================================
 // Campground routes
 // =====================================

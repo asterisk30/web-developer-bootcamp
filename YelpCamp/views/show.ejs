@@ -24,7 +24,7 @@
               <% } else { %>
                 <strong><i><%= campground.author.username %></i></strong>
               <% } %>
-              <span class="float-right"><%= campground.created %></span>
+              <span class="float-right"><%= moment(campground.created).format('dddd, MMM DD YYYY') %></span>
             </p>
           </div>
         </div>
@@ -41,7 +41,7 @@
               <% } else { %>
                 <strong><i><%= comment.author.username %></i></strong>
               <% } %>
-              <span class="float-right"><%= comment.created %></span>
+              <span class="float-right"><%= moment(moment(comment.created).format('YYYYMMDDkkmmss'), 'YYYYMMDDkkmmss').fromNow() %></span>
               <br>
               <p>
                 <%= comment.text %>
