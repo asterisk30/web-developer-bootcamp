@@ -6,6 +6,8 @@ var express = require('express'),
 // =====================================
 // Comment routes
 // =====================================
+
+// add new comment
 router.post('/campground/:id', isLoggedIn, function(req, res) {
   // look up campground using id
   Campgound.findById(req.params.id, function(err, campground) {
@@ -36,6 +38,19 @@ router.post('/campground/:id', isLoggedIn, function(req, res) {
     }
   })
 })
+
+// delete single comment
+router.delete('/campground/:id/comments/:comment_id', isLoggedIn, function(req, res) {
+  Comment.findByIdAndRemove(req.params.comment_id, function(err) {
+    if (err) {
+      console.log(err);
+      res.render('error', {error: err});
+    } else {
+      res.redirect('/campground/' + req.params.id);
+    }
+  })
+})
+
 
 // middleware to check if user is logged in
 function isLoggedIn(req, res, next) {
