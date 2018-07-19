@@ -5,6 +5,8 @@ var express = require('express'),
 // =====================================
 // Campground routes
 // =====================================
+
+// index page
 router.get('/', function(req, res) {
   // get all campgrounds from DB
   Campgound.find({}, function(err, camp) {
@@ -16,6 +18,7 @@ router.get('/', function(req, res) {
   })
 })
 
+// create new post
 router.post('/', isLoggedIn, function(req, res) {
   // get data from form
   // add data to campground array
@@ -47,6 +50,7 @@ router.post('/', isLoggedIn, function(req, res) {
   });
 })
 
+// new post page
 router.get('/new', isLoggedIn, function(req, res) {
   res.render('newcamp');
 })
@@ -62,6 +66,40 @@ router.get('/:id', function(req, res) {
     }
   })
 })
+
+// edit page
+router.get('/:id/edit', function(req, res) {
+  Campgound.findById(req.params.id, function(err, foundCamp) {
+    if (err) {
+      res.redirect('/campground');
+    } else {
+      res.render('edit', {campground: foundCamp});
+    }
+  })
+})
+
+// put route
+router.put('/:id', function(req, res) {
+  let name = req.body.name,
+      image = req.body.image,
+      desc = req.body.desc;
+  let newCamp = {
+    name: name,
+    image: image,
+    description: desc
+  };
+  Campgound.findByIdAndUpdate(req.params.id, newCamp, function(err, updatedCamp) {
+    if (err) {
+      console.log(err);
+      res.redirect('/campground');
+    } else {
+      res.redirect('/campground/' + updatedCamp._id);
+    }
+  })
+})
+
+// delete post
+
 
 // middleware to check if user is logged in
 function isLoggedIn(req, res, next) {
