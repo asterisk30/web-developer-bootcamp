@@ -99,7 +99,16 @@ router.put('/:id', function(req, res) {
 })
 
 // delete post
-
+router.delete('/:id', function(req, res) {
+  Campgound.findByIdAndRemove(req.params.id, function(err) {
+    if (err) {
+      console.log(err);
+      res.redirect('/campground/' + req.params.id);
+    } else {
+      res.redirect('/campground');
+    }
+  })
+})
 
 // middleware to check if user is logged in
 function isLoggedIn(req, res, next) {

@@ -34,7 +34,7 @@
         <div class="modify row">
             <a class="btn btn-outline-warning btn-sm" href="/campground/<%= campground._id%>/edit">Edit Campground</a>
             <form id="delete" action="/campground/<%= campground._id %>?_method=DELETE" method="POST">
-              <button class="btn btn-outline-danger btn-sm">Delete Campground</button>
+              <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure?')">Delete Campground</button>
             </form>
           </div>
       <% } %>
