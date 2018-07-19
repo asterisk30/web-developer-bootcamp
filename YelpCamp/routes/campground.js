@@ -87,7 +87,8 @@ router.put('/:id', isEditAllowed, function(req, res) {
   let newCamp = {
     name: name,
     image: image,
-    description: desc
+    description: desc,
+    updated: Date.now()
   };
   Campgound.findByIdAndUpdate(req.params.id, newCamp, function(err, updatedCamp) {
     if (err) {
