@@ -1,9 +1,9 @@
 <% include partials/header %>
 
-<h1 class="text-center">Edit campground <i><%= campground.name %></i> here</h1>
+<h1 class="text-center">Edit campground <i class="underline"><%= campground.name %></i> here</h1>
 <div class="container">
   <div class="row">
-    <div style="width: 30%; margin: 30px auto;">
+    <div style="width: 50%; margin: 30px auto;">
       <form action="/campground/<%= campground._id %>?_method=PUT" method="POST">
         <div class="form-group">
         <input class="form-control" type="text" name="name" value="<%= campground.name %>">
@@ -12,13 +12,13 @@
         <input class="form-control" type="text" name="image" value="<%= campground.image %>">
         </div>
         <div class="form-group">
-          <textarea name="desc" cols="30" rows="15"><%= campground.description %></textarea>
+          <textarea name="desc" class="form-control" rows="15"><%= campground.description %></textarea>
         </div>
         <div class="form-group">
         <button class="btn btn-lg btn-success btn-block">Submit</button>
       </div>
       </form>
-      <a href="/campground">View All Campgounds</a>
+      <a href="/campground/<%= campground._id %>">Go Back</a>
     </div>
   </div>
 </div>
