@@ -39,8 +39,22 @@ router.post('/campground/:id', isLoggedIn, function(req, res) {
   })
 })
 
+// update single comment
+router.put('/campground/:id/comments/:comment_id', isEditAllowed, function(req, res) {
+  let newcomment = req.body.comment;
+  newcomment.updated = Date.now();
+  Comment.findByIdAndUpdate(req.params.comment_id, newcomment, function(err, newComment) {
+    if (err) {
+      console.log(err);
+      res.render('error', {error: err});
+    } else {
+      res.redirect('/campground/' + req.params.id);
+    }
+  })
+})
+
 // delete single comment
-router.delete('/campground/:id/comments/:comment_id', isLoggedIn, function(req, res) {
+router.delete('/campground/:id/comments/:comment_id', isEditAllowed, function(req, res) {
   Comment.findByIdAndRemove(req.params.comment_id, function(err) {
     if (err) {
       console.log(err);
@@ -57,6 +71,25 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
+    res.redirect('/login');
+  }
+}
+
+// middleware to check if user has authorization to edit/delete
+function isEditAllowed(req, res, next) {
+  if (req.isAuthenticated()) {
+    Comment.findById(req.params.comment_id, function(err, foundComment) {
+      if (err) {
+        res.render('error', {error: err});
+      } else {
+        if (foundComment.author.id.equals(req.user._id)) {
+          return next()
+        } else {
+          res.send('Permission Denied. Please contact admin.');
+        }
+      }
+    })
+  } else{
     res.redirect('/login');
   }
 }
