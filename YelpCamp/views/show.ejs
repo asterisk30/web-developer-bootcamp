@@ -57,6 +57,12 @@
               </p>
             </div>
           </div>
+          <% if (user && comment.author.username === user.username) { %>
+            <div class="modify row">
+              <button class="btn btn-warning btn-sm">Edit Comment</button>
+              <button class="btn btn-danger btn-sm">Delete Comment</button>
+            </div>
+          <% } %>
         <% }) %>
         <form action="/campground/<%= campground.id%>" method="POST">
           <div class="form-group">
