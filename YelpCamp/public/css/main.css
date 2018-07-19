@@ -32,3 +32,9 @@ body {
 .underline {
   text-decoration: underline;
 }
+.modify {
+  margin-bottom: 20px;
+}
+.modify>.btn {
+  margin-bottom: 10px;
+}

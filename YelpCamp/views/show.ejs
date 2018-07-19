@@ -30,6 +30,15 @@
         </div>
       </div>
       <p><%=  campground.description %></p>
+      <% if (user && campground.author.username === user.username) { %>
+        <div class="modify">
+            <a class="btn btn-outline-warning btn-sm" href="/campground/<%= campground._id%>/edit">Edit Campground</a>
+            <form id="delete" action="/campground/<%= campground._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-outline-danger btn-sm">Delete Campground</button>
+            </form>
+          </div>
+      <% } %>
+
       <div class="well">
         <h5>Comments</h5>
         <%  campground.comments.forEach(function(comment) { %>
