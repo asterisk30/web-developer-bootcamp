@@ -11,7 +11,7 @@ router.post('/campground/:id', isLoggedIn, function(req, res) {
   Campgound.findById(req.params.id, function(err, campground) {
     if (err) {
       console.log(err);
-      res.redirect('/campground');
+      res.render('error', {error: err});
     } else {
       // create new comment in DB
       let newcomment = req.body.comment;

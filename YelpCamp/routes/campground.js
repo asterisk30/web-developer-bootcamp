@@ -43,7 +43,8 @@ router.post('/', isLoggedIn, function(req, res) {
   // create new campground and save to database
   Campgound.create(newCamp, function(err, newCamp) {
     if (err) {
-      console.log(err)
+      console.log(err);
+      res.render('error', {error: err});
     } else {
       res.redirect('/campground');
     }
@@ -68,7 +69,7 @@ router.get('/:id', function(req, res) {
 })
 
 // edit page
-router.get('/:id/edit', function(req, res) {
+router.get('/:id/edit', isLoggedIn, function(req, res) {
   Campgound.findById(req.params.id, function(err, foundCamp) {
     if (err) {
       res.redirect('/campground');
@@ -79,7 +80,7 @@ router.get('/:id/edit', function(req, res) {
 })
 
 // put route
-router.put('/:id', function(req, res) {
+router.put('/:id', isLoggedIn, function(req, res) {
   let name = req.body.name,
       image = req.body.image,
       desc = req.body.desc;
@@ -91,7 +92,7 @@ router.put('/:id', function(req, res) {
   Campgound.findByIdAndUpdate(req.params.id, newCamp, function(err, updatedCamp) {
     if (err) {
       console.log(err);
-      res.redirect('/campground');
+      res.render('error', {error: err});
     } else {
       res.redirect('/campground/' + updatedCamp._id);
     }
@@ -99,11 +100,11 @@ router.put('/:id', function(req, res) {
 })
 
 // delete post
-router.delete('/:id', function(req, res) {
+router.delete('/:id', isLoggedIn, function(req, res) {
   Campgound.findByIdAndRemove(req.params.id, function(err) {
     if (err) {
       console.log(err);
-      res.redirect('/campground/' + req.params.id);
+      res.render('error', {error: err});
     } else {
       res.redirect('/campground');
     }
