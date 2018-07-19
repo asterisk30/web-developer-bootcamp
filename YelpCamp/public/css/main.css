@@ -34,7 +34,8 @@ body {
 }
 .modify {
   margin-bottom: 20px;
+  margin-left: auto;
 }
-.modify>.btn {
-  margin-bottom: 10px;
+.btn-sm {
+  margin-right: 10px;
 }
