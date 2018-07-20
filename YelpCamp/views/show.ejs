@@ -81,14 +81,13 @@
           </div>
           <% if (user && comment.author.username === user.username) { %>
             <div class="modify row">
-              <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editCommentModal">Edit Comment</button>
+              <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#<%= comment._id %>">Edit Comment</button>
               <form action="/campground/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                 <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete Comment</button>
               </form>
             </div>
-          
             <!-- Modal -->
-            <div class="modal fade" id="editCommentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="<%= comment._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
