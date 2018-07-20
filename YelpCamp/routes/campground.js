@@ -1,6 +1,7 @@
 var express = require('express'),
     router = express.Router(),
-    Campgound = require('../models/campground');
+    Campgound = require('../models/campground'),
+    middlewareObj = require('../middleware');
 
 // =====================================
 // Campground routes
@@ -19,7 +20,7 @@ router.get('/', function(req, res) {
 })
 
 // create new post
-router.post('/', isLoggedIn, function(req, res) {
+router.post('/', middlewareObj.isLoggedIn, function(req, res) {
   // get data from form
   // add data to campground array
   // redirect to campground page
@@ -54,7 +55,7 @@ router.post('/', isLoggedIn, function(req, res) {
 })
 
 // new post page
-router.get('/new', isLoggedIn, function(req, res) {
+router.get('/new', middlewareObj.isLoggedIn, function(req, res) {
   res.render('newcamp');
 })
 
@@ -71,7 +72,7 @@ router.get('/:id', function(req, res) {
 })
 
 // edit page
-router.get('/:id/edit', isEditAllowed, function(req, res) {
+router.get('/:id/edit', middlewareObj.canEditCamp, function(req, res) {
   Campgound.findById(req.params.id, function(err, foundCamp) {
     if (err) {
       res.redirect('/campground');
@@ -82,7 +83,7 @@ router.get('/:id/edit', isEditAllowed, function(req, res) {
 })
 
 // put route
-router.put('/:id', isEditAllowed, function(req, res) {
+router.put('/:id', middlewareObj.canEditCamp, function(req, res) {
   let name = req.body.name,
       image = req.body.image,
       price = req.body.price,
@@ -105,7 +106,7 @@ router.put('/:id', isEditAllowed, function(req, res) {
 })
 
 // delete post
-router.delete('/:id', isEditAllowed, function(req, res) {
+router.delete('/:id', middlewareObj.canEditCamp, function(req, res) {
   Campgound.findByIdAndRemove(req.params.id, function(err) {
     if (err) {
       console.log(err);
@@ -115,33 +116,5 @@ router.delete('/:id', isEditAllowed, function(req, res) {
     }
   })
 })
-
-// middleware to check if user is logged in
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    res.redirect('/login');
-  }
-}
-
-// middleware to check if user has authorization to edit/delete
-function isEditAllowed(req, res, next) {
-  if (req.isAuthenticated()) {
-    Campgound.findById(req.params.id, function(err, foundCamp) {
-      if (err) {
-        res.render('error', {error: err});
-      } else {
-        if (foundCamp.author.id.equals(req.user._id)) {
-          return next()
-        } else {
-          res.send('Permission Denied. Please contact admin.');
-        }
-      }
-    })
-  } else{
-    res.redirect('/login');
-  }
-}
 
 module.exports = router;
