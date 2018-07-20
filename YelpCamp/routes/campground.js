@@ -25,6 +25,7 @@ router.post('/', isLoggedIn, function(req, res) {
   // redirect to campground page
   let name = req.body.name;
   let img = req.body.image;
+  let price = req.body.price;
   let desc = req.body.desc;
   let author = {
     id: req.user._id,
@@ -34,6 +35,7 @@ router.post('/', isLoggedIn, function(req, res) {
   let newCamp = {
     name: name,
     image: img,
+    price: price,
     description: desc,
     author: author,
     created: created
@@ -83,10 +85,12 @@ router.get('/:id/edit', isEditAllowed, function(req, res) {
 router.put('/:id', isEditAllowed, function(req, res) {
   let name = req.body.name,
       image = req.body.image,
+      price = req.body.price,
       desc = req.body.desc;
   let newCamp = {
     name: name,
     image: image,
+    price: price,
     description: desc,
     updated: Date.now()
   };

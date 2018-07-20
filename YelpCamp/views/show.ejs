@@ -14,7 +14,11 @@
       <img class="img-thumbnail" src="<%= campground.image %>">
       <br><br>
       <div class="caption-full  container-camp">
-        <h5 class="float-right underline">$50.00/night</h5>
+        <% if (campground.price) { %>
+          <h5 class="float-right underline">$<%= campground.price %>/night</h5>
+        <% } else { %>
+          <h5 class="float-right underline">No Price Quote Yet</h5>
+        <% } %>
         <h4><%=  campground.name %></h4>
         <div class="row">
           <div class="col-md-12">
