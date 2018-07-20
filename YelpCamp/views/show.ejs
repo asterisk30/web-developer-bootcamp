@@ -24,7 +24,16 @@
               <% } else { %>
                 <strong><i><%= campground.author.username %></i></strong>
               <% } %>
-              <span class="float-right" title="<%= moment(campground.created).format() %>"><%= moment(campground.created).format('dddd, MMM DD YYYY') %></span>
+              <% if (!campground.updated) { %>
+                <span class="float-right" title="<%= moment(campground.created).format() %>">
+                  Created On 
+                  <%= moment(campground.created).format('dddd, MMM DD YYYY') %></span>
+              <% } else { %>
+                <span class="float-right" title="<%= moment(campground.updated).format() %>">
+                  Updated On 
+                  <%= moment(campground.updated).format('dddd, MMM DD YYYY') %></span>
+              <% } %>
+              
             </p>
           </div>
         </div>
@@ -50,7 +59,16 @@
               <% } else { %>
                 <strong><i><%= comment.author.username %></i></strong>
               <% } %>
-              <span class="float-right" title="<%= moment(comment.created).format() %>"><%= moment(moment(comment.created).format('YYYYMMDDkkmmss'), 'YYYYMMDDkkmmss').fromNow() %></span>
+              <% if (!comment.updated) { %>
+                <span class="float-right" title="<%= moment(comment.created).format() %>">
+                  Created 
+                  <%= moment(moment(comment.created).format('YYYYMMDDkkmmss'), 'YYYYMMDDkkmmss').fromNow() %></span>
+              <% } else { %>
+                <span class="float-right" title="<%= moment(comment.updated).format() %>">
+                  Updated 
+                  <%= moment(moment(comment.updated).format('YYYYMMDDkkmmss'), 'YYYYMMDDkkmmss').fromNow() %></span>
+              <% } %>
+
               <br>
               <p>
                 <%= comment.text %>
