@@ -49,6 +49,7 @@ router.post('/', middlewareObj.isLoggedIn, function(req, res) {
       console.log(err);
       res.render('error', {error: err});
     } else {
+      req.flash('green', 'Campground added successfully!');
       res.redirect('/campground');
     }
   });
@@ -100,6 +101,7 @@ router.put('/:id', middlewareObj.canEditCamp, function(req, res) {
       console.log(err);
       res.render('error', {error: err});
     } else {
+      req.flash('green', 'Campground updated successfully!');
       res.redirect('/campground/' + updatedCamp._id);
     }
   })
@@ -112,6 +114,7 @@ router.delete('/:id', middlewareObj.canEditCamp, function(req, res) {
       console.log(err);
       res.render('error', {error: err});
     } else {
+      req.flash('green', 'Campground deleted successfully!');
       res.redirect('/campground');
     }
   })

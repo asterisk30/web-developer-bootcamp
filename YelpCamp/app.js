@@ -6,7 +6,8 @@ var express = require('express'),
     localStrategy = require('passport-local'),
     moment = require('moment'),
     User = require('./models/user'),
-    seedDB = require('./seeds'),
+    // seedDB = require('./seeds'),
+    flash = require('connect-flash'),
     methodOverride = require('method-override'),
     app = express();
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
+app.use(flash());
 app.locals.moment = moment;
 
 
@@ -36,6 +38,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
   res.locals.user = req.user;
+  res.locals.red = req.flash('red');
+  res.locals.green = req.flash('green');
+  res.locals.error = req.flash('error');
   next();
 });
 passport.use(new localStrategy(User.authenticate()));

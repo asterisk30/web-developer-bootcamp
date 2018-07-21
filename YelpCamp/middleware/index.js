@@ -7,6 +7,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
+    req.flash('red', 'You need to log in to proceed.');
     res.redirect('/login');
   }
 };
@@ -20,11 +21,13 @@ middlewareObj.canEditCamp = function(req, res, next) {
         if (foundCamp.author.id.equals(req.user._id)) {
           return next();
         } else {
-          res.send('Permission Denied. Please contact admin.');
+          req.flash('red', 'Permission Denied. Please contact admin.');
+          res.redirect('/campground/' + req.params.id);
         }
       }
     })
   } else{
+    req.flash('red', 'You need to log in to proceed.');
     res.redirect('/login');
   }
 };
@@ -38,11 +41,13 @@ middlewareObj.canEditComment = function(req, res, next) {
         if (foundComment.author.id.equals(req.user._id)) {
           return next();
         } else {
-          res.send('Permission Denied. Please contact admin.');
+          req.flash('red', 'Permission Denied. Please contact admin.');
+          res.redirect('/campground/' + req.params.id);
         }
       }
     })
   } else{
+    req.flash('red', 'You need to log in to proceed.');
     res.redirect('/login');
   }
 };

@@ -32,6 +32,8 @@ router.post('/campground/:id', middlewareObj.isLoggedIn, function(req, res) {
           // connect comment to campground
           campground.comments.push(newcomment);
           campground.save();
+          //flash success comment message
+          req.flash('green', 'Comment added successfully!');
           // redirect to show page
           res.redirect(302, '/campground/' + campground._id);
         }
@@ -49,6 +51,8 @@ router.put('/campground/:id/comments/:comment_id', middlewareObj.canEditComment,
       console.log(err);
       res.render('error', {error: err});
     } else {
+      //flash success comment message
+      req.flash('green', 'Comment updated successfully!');
       res.redirect('/campground/' + req.params.id);
     }
   })
@@ -61,6 +65,8 @@ router.delete('/campground/:id/comments/:comment_id', middlewareObj.canEditComme
       console.log(err);
       res.render('error', {error: err});
     } else {
+      //flash success comment message
+      req.flash('green', 'Comment deleted successfully!');
       res.redirect('/campground/' + req.params.id);
     }
   })
