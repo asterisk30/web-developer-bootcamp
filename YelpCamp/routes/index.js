@@ -62,7 +62,7 @@ router.get('/logout', function(req, res) {
   let user = req.user.username;
   req.logout();
   req.flash('green', ' Logged out successfully. See you next time ' + user + '!');
-  res.redirect('/');
+  res.redirect('/campground');
 })
 
 module.exports = router;
