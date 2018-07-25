@@ -8,6 +8,9 @@ var campgroundSchema = new mongoose.Schema({
   created: Number,
   updated: Number,
   price: Number,
+  location: String,
+  lat: Number,
+  lng: Number,
   author: {
     id: {
       type: mongoose.Schema.Types.ObjectId,

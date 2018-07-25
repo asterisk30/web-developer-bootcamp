@@ -1,8 +1,17 @@
 var express = require('express'),
     router = express.Router(),
     Campgound = require('../models/campground'),
-    middlewareObj = require('../middleware');
+    middlewareObj = require('../middleware'),
+    NodeGeocoder = require('node-geocoder');
+ 
+var options = {
+      provider: 'google',
+      httpAdapter: 'https',
+      apiKey: process.env.GEOCODER_API_KEY,
+      formatter: null
+    };
 
+var geocoder = NodeGeocoder(options);
 // =====================================
 // Campground routes
 // =====================================
@@ -21,38 +30,46 @@ router.get('/', function(req, res) {
 
 // create new post
 router.post('/', middlewareObj.isLoggedIn, function(req, res) {
-  // get data from form
-  // add data to campground array
-  // redirect to campground page
-  let name = req.body.name;
-  let img = req.body.image;
-  let price = req.body.price;
-  let desc = req.body.desc;
-  let author = {
-    id: req.user._id,
-    username: req.user.username
-  };
-  let created = Date.now();
-  let newCamp = {
-    name: name,
-    image: img,
-    price: price,
-    description: desc,
-    author: author,
-    created: created
-  };
-
-
-  // create new campground and save to database
-  Campgound.create(newCamp, function(err, newCamp) {
-    if (err) {
-      console.log(err);
-      res.render('error', {error: err});
+  var name = req.body.name,
+      image = req.body.image,
+      price = req.body.price,
+      desc = req.body.desc,
+      author = {
+        id: req.user._id,
+        username: req.user.username
+      },
+      created = Date.now();
+  geocoder.geocode(req.body.location, function(err, data) {
+    if (err || !data.length) {
+      req.flash('red', 'Invalid Address. Please input correct location.');
+      res.redirect('back');
     } else {
-      req.flash('green', 'Campground added successfully!');
-      res.redirect('/campground');
+      var location = data[0].formattedAddress,
+          lat = data[0].latitude,
+          lng = data[0].longitude;
+      var newCamp = {
+        name: name,
+        image: image,
+        price: price,
+        location: location,
+        lat: lat,
+        lng: lng,
+        description: desc,
+        author: author,
+        created: created
+      };
+      // create new campground and save to database
+      Campgound.create(newCamp, function(err, newCamp) {
+        if (err) {
+          console.log(err);
+          res.render('error', {error: err});
+        } else {
+          req.flash('green', 'Campground added successfully!');
+          res.redirect('/campground');
+        }
+      });
     }
-  });
+  })
 })
 
 // new post page
@@ -85,24 +102,37 @@ router.get('/:id/edit', middlewareObj.canEditCamp, function(req, res) {
 
 // put route
 router.put('/:id', middlewareObj.canEditCamp, function(req, res) {
-  let name = req.body.name,
+  var name = req.body.name,
       image = req.body.image,
       price = req.body.price,
       desc = req.body.desc;
-  let newCamp = {
-    name: name,
-    image: image,
-    price: price,
-    description: desc,
-    updated: Date.now()
-  };
-  Campgound.findByIdAndUpdate(req.params.id, newCamp, function(err, updatedCamp) {
-    if (err) {
-      console.log(err);
-      res.render('error', {error: err});
+  geocoder.geocode(req.body.location, function(err, data) {
+    if (err || !data.length) {
+      req.flash('red', 'Invalid Address. Please input correct location.');
+      res.redirect('back');
     } else {
-      req.flash('green', 'Campground updated successfully!');
-      res.redirect('/campground/' + updatedCamp._id);
+      var location = data[0].formattedAddress,
+      lat = data[0].latitude,
+      lng = data[0].longitude;
+      var newCamp = {
+        name: name,
+        image: image,
+        price: price,
+        location: location,
+        lat: lat,
+        lng: lng,
+        description: desc,
+        updated: Date.now()
+      };
+      Campgound.findByIdAndUpdate(req.params.id, newCamp, function(err, updatedCamp) {
+        if (err) {
+          console.log(err);
+          res.render('error', {error: err});
+        } else {
+          req.flash('green', 'Campground updated successfully!');
+          res.redirect('/campground/' + updatedCamp._id);
+        }
+      })
     }
   })
 })
