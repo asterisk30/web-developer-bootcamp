@@ -18,13 +18,23 @@ router.get('/signup', function(req, res) {
 })
 
 router.post('/signup', function(req, res) {
-  User.register(new User({username: req.body.username}), req.body.password, function(err, user) {
+  var newUser = new User({username: req.body.username});
+  if (req.body.invitationCode === process.env.ADMIN_CODE) {
+    newUser.isAdmin = true;
+  }
+  User.register(newUser, req.body.password, function(err, user) {
     if (err) {
       req.flash('red', err.message);
       res.redirect('/signup');
     } else {
       passport.authenticate('local')(req, res, function() {
-        req.flash('green', 'Signed up successfully. Welcome ' + req.body.username + '!');
+        var showname;
+        if (newUser.isAdmin === false) {
+          showname = req.body.username;
+        } else {
+          showname = 'Admin';
+        }
+        req.flash('green', 'Signed up successfully. Welcome ' + showname + '!');
         res.redirect('/campground');
       })
     }
@@ -50,7 +60,13 @@ router.post('/login', function(req, res, next) {
         req.flash('red', 'Oops login failed, please come back later.');
         res.redirect('/login');
       }
-      req.flash('green', 'Logged in successfully. Welcome ' + req.user.username + '!');
+      var showname;
+      if (user.isAdmin === false) {
+        showname = req.user.username;
+      } else {
+        showname = 'Admin';
+      }
+      req.flash('green', 'Logged in successfully. Welcome ' + showname + '!');
       res.redirect('/campground');
     });
   })(req, res, next);
