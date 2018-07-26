@@ -18,7 +18,7 @@ middlewareObj.canEditCamp = function(req, res, next) {
       if (err) {
         res.render('error', {error: err});
       } else {
-        if (foundCamp.author.id.equals(req.user._id)) {
+        if (foundCamp.author.id.equals(req.user._id) || req.user.isAdmin) {
           return next();
         } else {
           req.flash('red', 'Permission Denied. Please contact admin.');
@@ -38,7 +38,7 @@ middlewareObj.canEditComment = function(req, res, next) {
       if (err) {
         res.render('error', {error: err});
       } else {
-        if (foundComment.author.id.equals(req.user._id)) {
+        if (foundComment.author.id.equals(req.user._id)  || req.user.isAdmin) {
           return next();
         } else {
           req.flash('red', 'Permission Denied. Please contact admin.');

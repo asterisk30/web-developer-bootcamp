@@ -45,7 +45,7 @@
         </div>
       </div>
       <p><%=  campground.description %></p>
-      <% if (user && campground.author.username === user.username) { %>
+      <% if (user && campground.author.username === user.username || (user && user.isAdmin)) { %>
         <div class="modify row">
             <a class="btn btn-outline-warning btn-sm" href="/campground/<%= campground._id%>/edit">Edit Campground</a>
             <form action="/campground/<%= campground._id %>?_method=DELETE" method="POST">
@@ -81,7 +81,7 @@
               </p>
             </div>
           </div>
-          <% if (user && comment.author.username === user.username) { %>
+          <% if (user && comment.author.username === user.username || (user && user.isAdmin)) { %>
             <div class="modify row">
               <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#<%= comment._id %>">Edit Comment</button>
               <form action="/campground/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
