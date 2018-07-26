@@ -4,25 +4,30 @@
 <div class="container">
   <div class="row">
     <div style="width: 50%; margin: 30px auto;">
-      <form action="/campground" method="POST">
+      <form action="/campground" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-        <input class="form-control" type="text" name="name" placeholder="name" required>
+          <label for="name">Campground Name</label>
+          <input class="form-control" type="text" name="name" placeholder="i.e. Yosemite" required>
         </div>
         <div class="form-group">
-        <input class="form-control" type="text" name="image" placeholder="image url" required>
+          <label for="image">Campground Image</label>
+          <input class="form-control" type="file" id="image" name="image" accept="image/*" required>
         </div>
         <div class="form-group">
-          <input class="form-control" type="number" name="price" step="0.5" min="0" placeholder="price per night">
+          <label for="price">Price per night (USD)</label>
+          <input class="form-control" type="number" name="price" step="0.5" min="0" placeholder="i.e. 100">
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" name="location" placeholder="location">
+          <label for="location">Campground Location</label>
+          <input class="form-control" type="text" name="location" placeholder="i.e. 1350 6th Ave New York, NY">
         </div>
         <div class="form-group">
+          <label for="desc">Campground Description</label>
           <textarea name="desc" class="form-control" rows="15" placeholder="description goes here..."></textarea>
         </div>
         <div class="form-group">
-        <button class="btn btn-lg btn-success btn-block">Submit</button>
-      </div>
+          <button class="btn btn-lg btn-success btn-block">Submit</button>
+        </div>
       </form>
       <a href="/campground">View All Campgounds</a>
     </div>

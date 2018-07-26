@@ -1,4 +1,6 @@
 var express = require('express'),
+    multer = require('multer'),
+    cloudinary = require('cloudinary'),
     router = express.Router(),
     Campgound = require('../models/campground'),
     middlewareObj = require('../middleware'),
@@ -12,6 +14,26 @@ var options = {
     };
 
 var geocoder = NodeGeocoder(options);
+
+var storage = multer.diskStorage({
+    filename: function(req, file, callback) {
+    callback(null, Date.now() + file.originalname);
+  }
+});
+var imageFilter = function (req, file, cb) {
+  // accept image files only
+  if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+      return cb(new Error('Only image files are allowed!'), false);
+  }
+  cb(null, true);
+};
+var upload = multer({ storage: storage, fileFilter: imageFilter});
+
+cloudinary.config({ 
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 // =====================================
 // Campground routes
 // =====================================
@@ -29,9 +51,8 @@ router.get('/', function(req, res) {
 })
 
 // create new post
-router.post('/', middlewareObj.isLoggedIn, function(req, res) {
+router.post('/', middlewareObj.isLoggedIn, upload.single('image'), function(req, res) {
   var name = req.body.name,
-      image = req.body.image,
       price = req.body.price,
       desc = req.body.desc,
       author = {
@@ -49,7 +70,6 @@ router.post('/', middlewareObj.isLoggedIn, function(req, res) {
           lng = data[0].longitude;
       var newCamp = {
         name: name,
-        image: image,
         price: price,
         location: location,
         lat: lat,
@@ -58,16 +78,19 @@ router.post('/', middlewareObj.isLoggedIn, function(req, res) {
         author: author,
         created: created
       };
-      // create new campground and save to database
-      Campgound.create(newCamp, function(err, newCamp) {
-        if (err) {
-          console.log(err);
-          res.render('error', {error: err});
-        } else {
-          req.flash('green', 'Campground added successfully!');
-          res.redirect('/campground');
-        }
-      });
+      cloudinary.uploader.upload(req.file.path, function(result) {
+        newCamp.image = result.secure_url;
+         // create new campground and save to database
+        Campgound.create(newCamp, function(err, newCamp) {
+          if (err) {
+            console.log(err);
+            res.render('error', {error: err});
+          } else {
+            req.flash('green', 'Campground added successfully!');
+            res.redirect('/campground');
+          }
+        });
+      })
     }
   })
 })
@@ -101,9 +124,8 @@ router.get('/:id/edit', middlewareObj.canEditCamp, function(req, res) {
 })
 
 // put route
-router.put('/:id', middlewareObj.canEditCamp, function(req, res) {
+router.put('/:id', middlewareObj.canEditCamp, upload.single('image'), function(req, res) {
   var name = req.body.name,
-      image = req.body.image,
       price = req.body.price,
       desc = req.body.desc;
   geocoder.geocode(req.body.location, function(err, data) {
@@ -116,7 +138,6 @@ router.put('/:id', middlewareObj.canEditCamp, function(req, res) {
       lng = data[0].longitude;
       var newCamp = {
         name: name,
-        image: image,
         price: price,
         location: location,
         lat: lat,
@@ -124,14 +145,17 @@ router.put('/:id', middlewareObj.canEditCamp, function(req, res) {
         description: desc,
         updated: Date.now()
       };
-      Campgound.findByIdAndUpdate(req.params.id, newCamp, function(err, updatedCamp) {
-        if (err) {
-          console.log(err);
-          res.render('error', {error: err});
-        } else {
-          req.flash('green', 'Campground updated successfully!');
-          res.redirect('/campground/' + updatedCamp._id);
-        }
+      cloudinary.uploader.upload(req.file.path, function(result) {
+        newCamp.image = result.secure_url;
+        Campgound.findByIdAndUpdate(req.params.id, newCamp, function(err, updatedCamp) {
+          if (err) {
+            console.log(err);
+            res.render('error', {error: err});
+          } else {
+            req.flash('green', 'Campground updated successfully!');
+            res.redirect('/campground/' + updatedCamp._id);
+          }
+        })
       })
     }
   })

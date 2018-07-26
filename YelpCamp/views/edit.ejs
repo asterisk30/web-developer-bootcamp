@@ -4,25 +4,30 @@
 <div class="container">
   <div class="row">
     <div style="width: 50%; margin: 30px auto;">
-      <form action="/campground/<%= campground._id %>?_method=PUT" method="POST">
+      <form action="/campground/<%= campground._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-        <input class="form-control" type="text" name="name" value="<%= campground.name %>" required>
+          <label for="name">Campground Name</label>
+          <input class="form-control" type="text" name="name" value="<%= campground.name %>" required>
         </div>
         <div class="form-group">
-        <input class="form-control" type="text" name="image" value="<%= campground.image %>" required>
+          <label for="image">Campground Image</label>
+          <input class="form-control" type="file" id="image" name="image" accept="image/*" required>
         </div>
         <div class="form-group">
+          <label for="price">Price per night (USD)</label>
           <input class="form-control" type="number" name="price" step="0.5" min="0"  value="<%= campground.price %>">
         </div>
         <div class="form-group">
+          <label for="location">Campground Location</label>
           <input class="form-control" type="text" name="location" value="<%= campground.location %>">
         </div>
         <div class="form-group">
+          <label for="desc">Campground Description</label>
           <textarea name="desc" class="form-control" rows="15"><%= campground.description %></textarea>
         </div>
         <div class="form-group">
-        <button class="btn btn-lg btn-success btn-block">Submit</button>
-      </div>
+          <button class="btn btn-lg btn-success btn-block">Submit</button>
+        </div>
       </form>
       <a href="/campground/<%= campground._id %>">Go Back</a>
     </div>
